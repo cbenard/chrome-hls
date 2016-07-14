@@ -1,0 +1,34 @@
+body{
+  background-color:black;
+}
+/* https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/mediaControlsNew.css#89 */
+#video_element{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+#cast_overlay {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+}
+
+#casticonactive {
+  margin-bottom:20px;
+  width: 32px;
+  height: 32px;
+  background-image:url('../images/ic_media_route_on_custom.png');
+}
+
+#casticonidle {
+  margin-bottom:20px;
+  width: 32px;
+  height: 32px;
+  background-image:url('../images/ic_media_route_off_custom.png');
+}

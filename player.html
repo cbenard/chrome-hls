@@ -2,25 +2,18 @@
 <html>
 <head>
   <script src="hls.0.5.41.min.js"></script>
-  <style>
-    body{
-      background-color:black;
-    }
-    /* https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/mediaControlsNew.css#89 */
-    #video{
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      margin: auto;
-      max-height: 100%;
-      max-width: 100%;
-    }
-  </style>
+  <script src="cast_sender.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <video id="video" controls></video>
+  <video id="video_element" controls autoplay>
+  </video>
+  <center>
+    <div id="cast_overlay">
+      <div id="casticonactive"></div>
+      <div id="casticonidle"></div>
+    </div>
+  </center>
   <script src="player.js"></script>
 </body>
 </html>
