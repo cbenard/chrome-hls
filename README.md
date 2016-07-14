@@ -1,7 +1,8 @@
 # Chrome HLS Extension
 
-Allows HLS playback in chrome browser
-Now supports casting to chromecast
+Allows HLS playback in chrome browser.
+
+Now supports casting to chromecast.
 
 # Usage
 
