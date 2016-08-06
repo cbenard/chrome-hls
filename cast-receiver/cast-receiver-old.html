@@ -1,13 +1,16 @@
-<body>
-<center>
-<video id='vid'></video>
-</center>
+<html>
+<head>
+  <meta http-equiv="cache-control" content="no-cache" />
+  <link rel="stylesheet" type="text/css" href="style.css">
 <script type="text/javascript"
     src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js">
 </script>
 <script type="text/javascript"
     src="//www.gstatic.com/cast/sdk/libs/mediaplayer/1.0.0/media_player.js">
 </script>
+</head>
+<body>
+<video id='vid'></video>
 
 <script type="text/javascript">
 if (window.location.href.indexOf('Debug=true') != -1) {
@@ -60,3 +63,4 @@ window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
 castReceiverManager.start();
 </script>
 </body>
+</html>

@@ -6,14 +6,14 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <video id="video_element" controls autoplay>
+  <video id="video_element" class="native_mode" controls autoplay>
   </video>
-  <center>
-    <div id="cast_overlay">
-      <div id="casticonactive"></div>
-      <div id="casticonidle"></div>
-    </div>
-  </center>
+  <div id="cast_overlay">
+    <div id="casticonactive"></div>
+    <div id="casticonidle"></div>
+  </div>
+  <img id="theater_overlay" src="/images/ic_aspect_ratio_white_48dp_2x.png">
+  </img>
   <script src="player.js"></script>
 </body>
 </html>

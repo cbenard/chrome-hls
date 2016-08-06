@@ -105,7 +105,7 @@ CastPlayer.prototype.initializeCastPlayer = function() {
  * Callback function for init success 
  */
 CastPlayer.prototype.onInitSuccess = function() {
-  //console.log("init success");
+  console.log("init success");
   this.updateMediaControlUI();
 };
 
@@ -113,7 +113,7 @@ CastPlayer.prototype.onInitSuccess = function() {
  * Generic error callback function 
  */
 CastPlayer.prototype.onError = function(e) {
-  //console.log("error", e);
+  console.log("error", e);
 };
 
 /**
@@ -146,10 +146,10 @@ CastPlayer.prototype.receiverListener = function(e) {
   if( e === 'available' ) {
     this.receivers_available = true;
     this.updateMediaControlUI();
-    //console.log("receiver found");
+    console.log("receiver found");
   }
   else {
-    //console.log("receiver list empty");
+    console.log("receiver list empty");
   }
 };
 
@@ -178,7 +178,7 @@ CastPlayer.prototype.sessionUpdateListener = function(isAlive) {
  * session request in opt_sessionRequest. 
  */
 CastPlayer.prototype.launchApp = function() {
-  //console.log("launching app...");
+  console.log("launching app...");
   chrome.cast.requestSession(
     this.sessionListener.bind(this),
     this.onLaunchError.bind(this));
@@ -192,7 +192,7 @@ CastPlayer.prototype.launchApp = function() {
  * @param {Object} e A chrome.cast.Session object
  */
 CastPlayer.prototype.onRequestSessionSuccess = function(e) {
-  //console.log("session success: " + e.sessionId);
+  console.log("session success: " + e.sessionId);
   this.session = e;
   this.deviceState = DEVICE_STATE.ACTIVE;
   this.updateMediaControlUI();
@@ -204,7 +204,7 @@ CastPlayer.prototype.onRequestSessionSuccess = function(e) {
  * Callback function for launch error
  */
 CastPlayer.prototype.onLaunchError = function() {
-  //console.log("launch error");
+  console.log("launch error");
   this.deviceState = DEVICE_STATE.ERROR;
 };
 
@@ -221,14 +221,14 @@ CastPlayer.prototype.stopApp = function() {
  * Callback function for stop app success 
  */
 CastPlayer.prototype.onStopAppSuccess = function(message) {
-  //console.log(message);
+  console.log(message);
   this.deviceState = DEVICE_STATE.IDLE;
   this.castPlayerState = PLAYER_STATE.IDLE;
   this.currentMediaSession = null;
   clearInterval(this.timer);
 
   // continue to play media locally
-  //console.log("current time: " + this.currentMediaTime);
+  console.log("current time: " + this.currentMediaTime);
   this.playMediaLocally();
   this.updateMediaControlUI();
 };
@@ -239,10 +239,10 @@ CastPlayer.prototype.onStopAppSuccess = function(message) {
  */
 CastPlayer.prototype.loadMedia = function(url) {
   if (!this.session) {
-    //console.log("no session");
+    console.log("no session");
     return;
   }
-  //console.log("loading " + url);
+  console.log("loading " + url);
   var mediaInfo = new chrome.cast.media.MediaInfo(url);
 
   mediaInfo.metadata = new chrome.cast.media.GenericMediaMetadata();
@@ -274,7 +274,7 @@ CastPlayer.prototype.loadMedia = function(url) {
  * @param {Object} mediaSession A new media object.
  */
 CastPlayer.prototype.onMediaDiscovered = function(how, mediaSession) {
-  //console.log("new media session ID:" + mediaSession.mediaSessionId + ' (' + how + ')');
+  console.log("new media session ID:" + mediaSession.mediaSessionId + ' (' + how + ')');
   this.currentMediaSession = mediaSession;
   if( how == 'loadMedia' ) {
     if( this.autoplay ) {
@@ -306,7 +306,7 @@ CastPlayer.prototype.onMediaDiscovered = function(how, mediaSession) {
  * Callback function when media load returns error 
  */
 CastPlayer.prototype.onLoadMediaError = function(e) {
-  //console.log(e);
+  console.log(e);
   this.castPlayerState = PLAYER_STATE.IDLE;
   // update UIs
   this.updateMediaControlUI();
@@ -321,7 +321,7 @@ CastPlayer.prototype.onMediaStatusUpdate = function(e) {
     this.currentMediaTime = 0;
     this.castPlayerState = PLAYER_STATE.IDLE;
   }
-  //console.log("updating media");
+  console.log("updating media");
   this.updateMediaControlUI();
 };
 
@@ -397,7 +397,7 @@ CastPlayer.prototype.playMedia = function() {
  * Callback function for media command success 
  */
 CastPlayer.prototype.mediaCommandSuccessCallback = function(info, e) {
-  ////console.log(info);
+  //console.log(info);
 };
 
 /**
@@ -451,3 +451,15 @@ var castPlayer = new CastPlayer();
 var mediaUrl = window.location.href.split("#")[1]
 castPlayer.loadMedia(mediaUrl)
 castPlayer.playMediaLocally();
+
+ var div = document.getElementById('theater_overlay');
+ div.addEventListener('click', function (event) {
+    var element = document.getElementById("video_element");
+    if(element.classList.contains("theater_mode")) {
+      element.classList.remove("theater_mode");
+      element.classList.add("native_mode");
+    } else {
+      element.classList.remove("native_mode");
+      element.classList.add("theater_mode");
+    }
+ });
