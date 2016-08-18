@@ -1,0 +1,159 @@
+body{
+      background-color:black;
+    }
+    /* https://chromium.googlesource.com/chromium/blink/+/master/Source/core/css/mediaControlsNew.css#89 */
+    .native_mode{
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      margin: auto;
+      max-height: 100%;
+      max-width: 100%;
+    }
+    .zoomed_mode{
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      margin: auto;
+      max-height: 100%;
+      width: 100%;
+    }
+
+    #video-controls{
+    	position:absolute;
+    	left:0px;
+    	right:0px;
+      	bottom: 0px;
+      	height:40px;
+      	background-color: white;
+    	display: flex;
+    	flex-direction: row;
+    	align-items: center;
+    }
+    #play-pause{
+    	display: flex;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    margin: 0;
+	    border: none;
+	    background-color: transparent;
+	    width: 48px;
+	    height: 100%;
+	    padding: 0;
+    }
+    #current-time{
+    	flex: none;
+	    display: flex;
+	    border: none;
+	    cursor: default;
+	    height: 48px;
+	    /* text runs right to the edge of the container, plus a little on
+	     * the left to pad the leading "/" */
+	    padding: 0 0 0 30px;
+	    line-height: 48px;
+	    color: #5a5a5a;
+    }
+    #duration{
+    	flex: none;
+	    display: flex;
+	    border: none;
+	    cursor: default;
+	    height: 48px;
+	    /* text runs right to the edge of the container, plus a little on
+	     * the left to pad the leading "/" */
+	    padding: 0 0 0 4px;
+	    line-height: 48px;
+	    color: #5a5a5a;
+    }
+    #seek-bar{
+    	display: flex;
+	    flex: 1 1 auto;
+	    height: 2px;
+	    /* Leave 6px on either side for the thumb.  Use margin so that
+	     * the slider doesn't extend into it.  We also add 12px border.
+	     */
+	    padding: 0;
+	    margin: 0 18px 0 18px;
+	    background-color: transparent;
+	    min-width: 25px;
+	    border: initial;
+    }
+    #mute{
+    	display: flex;
+    }
+    #volume-bar{
+    	display: flex;
+    }
+    #aspect{
+    	display: flex;
+    }
+    #full-screen{
+    	 display: flex;
+	    flex: none;
+	    overflow: hidden;
+	    border: none;
+	    width: 48px;
+	    height: 48px;
+	    line-height: 48px;
+	    background-color: initial;
+	    color: inherit;
+    }
+
+    /*#video-controls > span {
+      position:relative;
+      top:-5px;
+    }
+    #video-controls > input {
+      position:relative;
+      top:-2px;
+    }
+    #video-controls > button {
+      position:relative;
+      top:2px;
+    }*/
+    button{
+      background-color: Transparent;
+      background-repeat:no-repeat;
+      border: none;
+      overflow: hidden;
+      outline:none;
+    }
+
+    input[type=range] {
+  		-webkit-appearance: none;
+  	}
+	input[type=range]:focus {
+	  outline: none;
+	}
+	input[type=range]::-webkit-slider-runnable-track {
+	  height: 2px;
+	  cursor: pointer;
+	  animate: 0.2s;
+	  box-shadow: 0px 0px 0px #000000;
+	  background: #C9C9C9;
+	  border-radius: 0px;
+	  border: 0px solid #000000;
+	}
+	#volume-bar::-webkit-slider-runnable-track {
+	  background: #0596F7;
+	  color: rgba(255, 255, 255, 1);
+	}
+	input[type=range]:focus::-webkit-slider-runnable-track {
+	  background: #C9C9C9;
+	}
+	input[type=range]::-webkit-slider-thumb {
+	  box-shadow: 0px 0px 0px #000000;
+	  border: 0px;
+	  height: 12px;
+	  width: 12px;
+	  border-radius: 12px;
+	  background: #0596F7;
+	  cursor: pointer;
+	  -webkit-appearance: none;
+	  margin-top: -5px;
+	}
